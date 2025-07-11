@@ -98,61 +98,70 @@ const ProductPage = () => {
       <h2 className="page-title">Gestionar Productos</h2>
       <div className="card">
         <h3>{editingProduct ? "Editar Producto" : "Nuevo Producto"}</h3>
+
+        {/* --- INICIO DE LA SECCIÓN MODIFICADA --- */}
         <form onSubmit={handleSubmit} className="simple-form">
           <div className="form-group">
-            <label>Nombre</label>
+            <label htmlFor="name">Nombre del Producto</label>
             <input
+              id="name"
               type="text"
               name="name"
-              placeholder="Nombre del producto"
+              placeholder="Ej: Camisa de Lino"
               value={form.name}
               onChange={handleChange}
               required
             />
           </div>
           <div className="form-group">
-            <label>Descripción</label>
+            <label htmlFor="description">Descripción</label>
             <textarea
+              id="description"
               name="description"
-              placeholder="Descripción"
+              placeholder="Información detallada del producto"
               value={form.description}
               onChange={handleChange}
               required
+              rows="3"
             ></textarea>
           </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Precio</label>
-              <input
-                type="number"
-                name="price"
-                placeholder="Precio"
-                value={form.price}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label>Stock</label>
-              <input
-                type="number"
-                name="stock"
-                placeholder="Stock"
-                value={form.stock}
-                onChange={handleChange}
-                required
-              />
-            </div>
+          <div className="form-group">
+            <label htmlFor="price">Precio</label>
+            <input
+              id="price"
+              type="number"
+              name="price"
+              placeholder="Ej: 29.99"
+              step="0.01"
+              value={form.price}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className="form-group">
-            <label>Categoría</label>
+            <label htmlFor="stock">Stock Disponible</label>
+            <input
+              id="stock"
+              type="number"
+              name="stock"
+              placeholder="Ej: 50"
+              value={form.stock}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="categoryId">Categoría</label>
             <select
+              id="categoryId"
               name="categoryId"
               value={form.categoryId}
               onChange={handleChange}
               required
             >
-              <option value="">Selecciona una categoría</option>
+              <option value="" disabled>
+                Selecciona una categoría
+              </option>
               {categories.map((cat) => (
                 <option key={cat.id} value={cat.id}>
                   {cat.name}
@@ -160,15 +169,27 @@ const ProductPage = () => {
               ))}
             </select>
           </div>
-          <button type="submit" className="btn-primary">
-            {editingProduct ? "Actualizar" : "Crear"}
-          </button>
-          {editingProduct && (
-            <button type="button" onClick={resetForm} className="btn-secondary">
-              Cancelar
+
+          <div>
+            {" "}
+            {/* Contenedor para los botones */}
+            <button type="submit" className="btn-primary">
+              {editingProduct ? "Actualizar Producto" : "Crear Producto"}
             </button>
-          )}
+            {editingProduct && (
+              <button
+                type="button"
+                onClick={resetForm}
+                className="btn-secondary"
+                style={{ marginLeft: "1rem" }}
+              >
+                Cancelar
+              </button>
+            )}
+          </div>
         </form>
+        {/* --- FIN DE LA SECCIÓN MODIFICADA --- */}
+
         {error && <p className="error-message">{error}</p>}
       </div>
 
