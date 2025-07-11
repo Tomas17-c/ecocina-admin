@@ -16,6 +16,9 @@ const AdminLayout = () => {
         <nav>
           <ul>
             <li>
+              <NavLink to="/">Dashboard</NavLink>
+            </li>
+            <li>
               <NavLink to="/products">Productos</NavLink>
             </li>
             <li>

@@ -29,6 +29,8 @@ const request = async (endpoint, method, body = null) => {
 };
 
 export const api = {
+  getOrderById: (id) => request(`/orders/${id}`, "GET"),
+  updateOrder: (id, data) => request(`/orders/${id}`, "PATCH", data),
   login: (credentials) => request("/admin-tokens", "POST", credentials),
   getProducts: () => request("/products", "GET"),
   createProduct: (product) => request("/products", "POST", product),

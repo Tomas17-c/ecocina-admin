@@ -1,27 +1,17 @@
-/* src/pages/DashboardPage.css */
-.stats-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+.charts-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* El gráfico de barras ocupará más espacio */
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.chart-wrapper {
+  padding: 1.5rem;
+}
+
+/* Para pantallas más pequeñas, los gráficos se pondrán uno debajo del otro */
+@media (max-width: 992px) {
+  .charts-container {
+    grid-template-columns: 1fr;
   }
-  
-  .stat-card {
-    background-color: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    text-align: center;
-  }
-  
-  .stat-card h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1rem;
-    color: #6c757d;
-  }
-  
-  .stat-card p {
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--primary-color);
-  }
+}
